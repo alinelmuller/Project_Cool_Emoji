@@ -1,40 +1,57 @@
-// Player Infomation
-const player1 = " "
-const player2 = " "
 
-// Board Size
-const boardSize = {
-    "3x3": [3, 3],
-    "4x4": [4, 4],
-    "6x3": [6, 3],
-    "8x4": [8, 4]
-};
-let selectBoardsize = boardSize
+const playerSelect = document.querySelectorAll('.card');
 
-// Player Turns
-let turn = true  // if player1 or player2 
-let scorePlayer1 = 0
-let scroreplayer2 = 0
+playerSelect.forEach(card => {
+    card.addEventListener('click', () => {
+        const spanElement = card.querySelector('span'); 
+        if (card.classList.contains('emoji1')) {
+            spanElement.classList.add('emoji'); 
+        }
+        console.log(card);
+    });
+});
 
-//Cards
-let cards = []
-let flippedCards = []
-let unFlippedCards = []
-let checkCards = "" // boolian: true or false
 
-// Check Winner
-let winner = "" // player1 or player2 
+
+
+
+// // Player Infomation
+// const player1 = " "
+// const player2 = " "
+
+// // Board Size
+// const boardSize = {
+//     "3x3": [3, 3],
+//     "4x4": [4, 4],
+//     "6x3": [6, 3],
+//     "8x4": [8, 4]
+// };
+// let selectBoardsize = boardSize
+
+// // Player Turns
+// let turn = true  // if player1 or player2 
+// let scorePlayer1 = 0
+// let scroreplayer2 = 0
+
+// //Cards
+// let cards = []
+// let flippedCards = []
+// let unFlippedCards = []
+// let checkCards = "" // boolian: true or false
+
+// // Check Winner
+// let winner = "" // player1 or player2 
 
 
 // FUNCTIONS //
 
-function buildDeck () { /*check selectBoardsize and build it*/ } 
-function turns () { /*return player*/ } 
-function checkCards (){ /*return winner or keepPlaying*/ } 
-function resetGame () { }
-function playAgain () { }
-
-
+// function buildDeck () { /*check selectBoardsize and build it*/ } 
+// function turns () { /*return player*/ } 
+// function checkCards (){ /*return winner or keepPlaying*/ } 
+// function resetGame () { }
+// function playAgain () { }
+// const cols = 4; // Number of columns (dynamically set)
+// board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
 
 
