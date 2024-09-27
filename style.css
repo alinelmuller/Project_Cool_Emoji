@@ -26,6 +26,9 @@ h1{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
+#first{ display:none;}
+
 .player-info,
 .game-settings {
     margin: 10px 0;
@@ -47,4 +50,42 @@ select {
     border-radius: 5px;
 }
 
-/* #first{ display:none;} */
+
+/* #second{ display:block;} */
+
+.players {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.current-turn {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #ccc;
+    border: 1px solid #333;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+
+
+
