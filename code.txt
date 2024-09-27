@@ -1,0 +1,17 @@
+Pseudocode - Cool Emoji
+
+// Player Infomation
+const player1 = ""
+const player1 = ""
+
+
+- const player1, const player2
+- let turn
+- let scorePlayer1 , let scroreplayer2
+- const boardSize: 3x3, 4x4, 6x3, 8x4
+- let flippCard, let unflippCard
+- let cardFlipped
+- let matchedCard
+- let totalMatches
+
+//
