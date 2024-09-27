@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cool Emoji</title>
+    <title>Memory Game - Cool Emoji</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container" id="first">
+        <h1>Cool Emoji</h1>
+        <div class="player-info">
+            <label for="player1">Player 1:</label>
+            <input type="text" id="player1" name="player1">
+        </div>
+        <div class="player-info">
+            <label for="player2">Player 2:</label>
+            <input type="text" id="player2" name="player2">
+        </div>
+        <div class="game-settings">
+            <label for="game-size">Game Size:</label>
+            <select id="game-size" name="game-size">
+                <option value="3x3">3x3</option>
+                <option value="4x4">4x4</option>
+                <option value="6x3">6x3</option>
+                <option value="8x4">8x4</option>
+            </select>
+        </div>
+    </div>
+    <div class="container" id="second">
+        <h1>Cool Emoji</h1>
+    </div>
 </body>
 </html>
