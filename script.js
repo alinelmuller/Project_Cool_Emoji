@@ -1,3 +1,18 @@
+let buttonPlay = document.querySelector("#buttonPlay")
+
+// Get information of players and size of game
+buttonPlay.addEventListener('click', async () => {
+    let player1 = document.querySelector("#player1").value
+    let player2 = document.querySelector("#player2").value
+    let gameSize =  document.querySelector("#gameSize").value
+    let firstBox = document.getElementById("firstBox").style.display = "none"; 
+    let secondBox = document.getElementById("secondBox").style.display = "block";
+})
+
+console.log(player1)
+console.log(player2)
+console.log(gameSize)
+
 
 const playerSelect = document.querySelectorAll('.card');
 

@@ -8,27 +8,30 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container" id="first">
+    <div class="container" id="firstBox">
         <h1>Cool Emoji</h1>
-        <div class="player-info">
-            <label for="player1">Player 1:</label>
-            <input type="text" id="player1" name="player1">
-        </div>
-        <div class="player-info">
-            <label for="player2">Player 2:</label>
-            <input type="text" id="player2" name="player2">
-        </div>
-        <div class="game-settings">
-            <label for="game-size">Game Size:</label>
-            <select id="game-size" name="game-size">
-                <option value="3x3">3x3</option>
-                <option value="4x4">4x4</option>
-                <option value="6x3">6x3</option>
-                <option value="8x4">8x4</option>
-            </select>
-        </div>
+        <form>
+            <div class="player-info">
+                <label for="player1">Player 1:</label>
+                <input type="text" id="player1" name="player1">
+            </div>
+            <div class="player-info">
+                <label for="player2">Player 2:</label>
+                <input type="text" id="player2" name="player2">
+            </div>
+            <div class="game-settings">
+                <label for="gameSize">Game Size:</label>
+                <select id="gameSize" name="game-size">
+                    <option value="3x3">3x3</option>
+                    <option value="4x4">4x4</option>
+                    <option value="6x3">6x3</option>
+                    <option value="8x4">8x4</option>
+                </select>
+            </div>
+            <input type="button"  value="Play" id="buttonPlay">
+        </form>
     </div>
-    <div class="container" id="second">
+    <div class="container" id="secondBox">
         <h1>C 😎 😂 L <br />EM 🤠 JI</h1>
         <div class="players">
             <span>Player ABC </span>
