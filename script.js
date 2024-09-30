@@ -1,74 +1,30 @@
-let buttonPlay = document.querySelector("#buttonPlay")
+let buttonPlay = document.querySelector("#buttonPlay");
+document.getElementById("secondBox").style.display = "none"
 
-// Get information of players and size of game
-buttonPlay.addEventListener('click', async () => {
+let currentPlayer = 1
+
+// Get player info and game size
+buttonPlay.addEventListener('click', () => { 
     let player1 = document.querySelector("#player1").value
     let player2 = document.querySelector("#player2").value
-    let gameSize =  document.querySelector("#gameSize").value
-    let firstBox = document.getElementById("firstBox").style.display = "none"; 
-    let secondBox = document.getElementById("secondBox").style.display = "block";
-})
+    let gameSize = document.querySelector("#gameSize").value
 
-console.log(player1)
-console.log(player2)
-console.log(gameSize)
-
-
-const playerSelect = document.querySelectorAll('.card');
-
-playerSelect.forEach(card => {
-    card.addEventListener('click', () => {
-        const spanElement = card.querySelector('span'); 
-        if (card.classList.contains('emoji1')) {
-            spanElement.classList.add('emoji'); 
-        }
-        console.log(card);
-    });
+    document.getElementById("firstBox").style.display = "none"
+    document.getElementById("secondBox").style.display = "block"
+    document.getElementById("player1Name").textContent = player1
+    document.getElementById("player2Name").textContent = player2
+    document.getElementById("currentPlayer").textContent = player1
 });
 
 
+// const playerSelect = document.querySelectorAll('.card')
 
-
-
-// // Player Infomation
-// const player1 = " "
-// const player2 = " "
-
-// // Board Size
-// const boardSize = {
-//     "3x3": [3, 3],
-//     "4x4": [4, 4],
-//     "6x3": [6, 3],
-//     "8x4": [8, 4]
-// };
-// let selectBoardsize = boardSize
-
-// // Player Turns
-// let turn = true  // if player1 or player2 
-// let scorePlayer1 = 0
-// let scroreplayer2 = 0
-
-// //Cards
-// let cards = []
-// let flippedCards = []
-// let unFlippedCards = []
-// let checkCards = "" // boolian: true or false
-
-// // Check Winner
-// let winner = "" // player1 or player2 
-
-
-// FUNCTIONS //
-
-// function buildDeck () { /*check selectBoardsize and build it*/ } 
-// function turns () { /*return player*/ } 
-// function checkCards (){ /*return winner or keepPlaying*/ } 
-// function resetGame () { }
-// function playAgain () { }
-// const cols = 4; // Number of columns (dynamically set)
-// board.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-
-
-
-
-
+// playerSelect.forEach(card => {
+//     card.addEventListener('click', () => {
+//         const spanElement = card.querySelector('span')
+//         if (card.classList.contains('emoji1')) {
+//             spanElement.classList.add('emoji')
+//         }
+//         console.log(card)
+//     });
+// })

@@ -13,19 +13,20 @@
         <form>
             <div class="player-info">
                 <label for="player1">Player 1:</label>
-                <input type="text" id="player1" name="player1">
+                <input type="text" id="player1" name="player1" placeholder="Enter Player 1 Name">
             </div>
             <div class="player-info">
                 <label for="player2">Player 2:</label>
-                <input type="text" id="player2" name="player2">
+                <input type="text" id="player2" name="player2" placeholder="Enter Player 2 Name">
             </div>
             <div class="game-settings">
                 <label for="gameSize">Game Size:</label>
                 <select id="gameSize" name="game-size">
-                    <option value="3x3">3x3</option>
+                    <option value="2x3">2x3</option>
+                    <option value="3x4">3x4</option>
                     <option value="4x4">4x4</option>
-                    <option value="6x3">6x3</option>
-                    <option value="8x4">8x4</option>
+                    <option value="6x8">6x8</option>
+                    <option value="8x8">8x8</option>
                 </select>
             </div>
             <input type="button"  value="Play" id="buttonPlay">
@@ -34,33 +35,14 @@
     <div class="container" id="secondBox">
         <h1>C 😎 😂 L <br />EM 🤠 JI</h1>
         <div class="players">
-            <span>Player ABC </span>
-            <span> 2 X 4 </span>
-            <span> Player XYZ</span>
+            <span id="player1Name">Player ABC</span>
+            <span id="gameSize">2 X 4</span>
+            <span id="player2Name">Player XYZ</span>
         </div>
-        <div class="current-turn">
-            Name 1, it is your turn
+        <div class="currentPlayer">
+            <span id="currentPlayer">Name 1</span>, it is your turn
         </div>
-        <div class="board">
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji2"><span>😂</span></div>
-            <div class="card emoji2"><span>😂</span></div>
-            <div class="card emoji3"><span>🤠</span></div>
-            <div class="card emoji3"><span>🤠</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji2"><span>😂</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji2"><span>😂</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji2"><span>😂</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-            <div class="card emoji2"><span>😂</span></div>
-            <div class="card emoji1"><span>😎</span></div>
-        </div>
+        <div class="board"></div>
     </div>
 </body>
 </html>

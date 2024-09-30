@@ -23,12 +23,7 @@ h1{
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-#first{ 
-    display:block;
-}
-#secondBox{ 
-    display:none;
-}
+
 .player-info,
 .game-settings {
     margin: 10px 0;
@@ -53,14 +48,15 @@ select {
     margin-bottom: 10px;
     font-size: 1.2rem;
 }
-.current-turn {
+.currentPlayer{
     margin: 10px 0;
     font-size: 1.2rem;
     font-weight: bold;
+    width: 100%;
+    text-align: center;
 }
 .board {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     margin-bottom: 20px;
 }
