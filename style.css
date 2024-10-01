@@ -87,4 +87,7 @@ input[type="text"], select {
 .card.flipped span {
     display: block;
 }
+.buttons {
+    text-align: center;
+}
 

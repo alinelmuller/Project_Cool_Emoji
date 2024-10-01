@@ -1,9 +1,10 @@
 let buttonPlay = document.querySelector("#buttonPlay")
+let buttonNewGame = document.getElementById("buttonNewGame")
+let buttonReset = document.getElementById("buttonReset")
 document.getElementById("secondBox").style.display = "none"
 
 let currentPlayer = 1
 
-// Get player info and game size
 buttonPlay.addEventListener('click', () => {
     let player1 = document.querySelector("#player1").value
     let player2 = document.querySelector("#player2").value
@@ -89,12 +90,12 @@ function createEmojiPairs(numCards) {
         '🍎', '🍊', '🍉', '🍓', '🍒', '🍌', '🍍', '🍇', '🍔', '🍕', '🍟', '🍩',
         '🍦', '🍫', '🍿', '🍪', '🍭', '🧁', '🥨', '🍻', '🥂', '🍷', '🍸', '🍹'
     ];
-    let emojis = [];
-    const numPairs = numCards / 2;
+    let emojis = []
+    const numPairs = numCards / 2
 
     for (let i = 0; i < numPairs; i++) {
-        emojis.push(emojiList[i]);
-        emojis.push(emojiList[i]);
+        emojis.push(emojiList[i])
+        emojis.push(emojiList[i])
     }
     return (emojis)
 
@@ -104,6 +105,21 @@ function flipCard(card, emojiSpan) {
     card.classList.toggle('flipped');
     console.log("Card flipped with emoji:", emojiSpan.textContent);
 }
+
+buttonNewGame.addEventListener('click', () => {
+    document.getElementById("firstBox").style.display = "block"
+    document.getElementById("secondBox").style.display = "none"
+    document.querySelector("#player1").value = ''
+    document.querySelector("#player2").value = ''
+
+})
+buttonReset.addEventListener('click', () => {
+    const cards = document.getElementsByClassName("card")
+
+    for (let card of cards) {
+        card.classList.remove('flipped');
+    }
+});
 
 
 
