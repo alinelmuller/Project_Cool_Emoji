@@ -97,17 +97,14 @@ function cardClicked(card, emojiSpan) {
             emojiSpan: emojiSpan,
             emoji: emojiSpan.textContent
         })
-
         clickCount ++
-
-        // console.log(clickCount)
 
         if (clickCount === 2){
             let firstCard = flippedCards[0]
             let secondCard = flippedCards[1]
 
             if (firstCard.emoji === secondCard.emoji){
-                console.log('they match')
+                //console.log('they match')
                 flippedCards = []
                 clickCount = 0
 
@@ -121,12 +118,14 @@ function cardClicked(card, emojiSpan) {
                 switchPlayer()  
                 
             } else {
-                console.log('NOT match')
-                firstCard.card.classList.remove('flipped')
-                secondCard.card.classList.remove('flipped')
-                flippedCards = []
-                clickCount = 0
-                switchPlayer()  
+                setTimeout(() => {
+                    //console.log('NOT match')
+                    firstCard.card.classList.remove('flipped')
+                    secondCard.card.classList.remove('flipped')
+                    flippedCards = []
+                    clickCount = 0
+                    switchPlayer() 
+                }, 800);
             }
         } 
     }
@@ -141,6 +140,10 @@ function switchPlayer() {
     let currentPlayerName = document.querySelector(`#player${currentPlayer}`).value
     document.getElementById("currentPlayer").textContent = currentPlayerName
 }
+function checkWinner () {
+    let allCards = flippedCards
+} 
+
 
 function createEmojiPairs(numCards) {
 
