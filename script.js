@@ -9,8 +9,6 @@ let currentPlayer = 1
 let scoreP1 = 0
 let scoreP2 = 0
 
-
-// Start the game
 buttonPlay.addEventListener('click', () => {
     let player1 = document.querySelector("#player1").value
     let player2 = document.querySelector("#player2").value
@@ -20,12 +18,12 @@ buttonPlay.addEventListener('click', () => {
     document.getElementById("secondBox").style.display = "block" 
     document.getElementById("player1Name").textContent = player1 
     document.getElementById("player2Name").textContent = player2 
-    document.getElementById("currentPlayer").textContent = player1 
+   // document.getElementById("currentPlayer").textContent = (`${player1}, it is your turn`)
+   document.getElementById("currentPlayer").textContent = player1
 
     buildDeck(gameSize) 
 }) 
 
-// Build the game deck
 function buildDeck(gameSize) {
     const board = document.querySelector(".board") 
     board.innerHTML = "" 
@@ -116,7 +114,6 @@ function cardClicked(card, emojiSpan) {
                     document.getElementById("scoreP2").textContent = scoreP2
                 }
                 switchPlayer()  
-                
             } else {
                 setTimeout(() => {
                     //console.log('NOT match')
@@ -132,21 +129,40 @@ function cardClicked(card, emojiSpan) {
 }
 
 function switchPlayer() {
+   
     if (currentPlayer === 1) {
         currentPlayer = 2
+        console.log(checkWinner())
     } else {
         currentPlayer = 1
+        console.log(checkWinner())
     }
     let currentPlayerName = document.querySelector(`#player${currentPlayer}`).value
+    //document.getElementById("currentPlayer").textContent = (`${currentPlayerName} , it is your turn`)
     document.getElementById("currentPlayer").textContent = currentPlayerName
+    
+    if (checkWinner()) {
+        document.getElementById("currentPlayer").textContent = declareWinner()
+    }
 }
-function checkWinner () {
-    let allCards = flippedCards
-} 
 
+function checkWinner() {
+    let flippedCards = document.querySelectorAll(".card.flipped")
+    let totalCards = document.querySelectorAll(".card").length
+    return flippedCards.length === totalCards
+}
+
+function declareWinner() {
+    if (scoreP1 > scoreP2) {
+        return document.querySelector("#player1").value + " wins!"
+    } else if (scoreP2 > scoreP1) {
+        return document.querySelector("#player2").value + " wins!"
+    } else {
+        return "It's a tie!"
+    }
+}
 
 function createEmojiPairs(numCards) {
-
     const emojiList = [
         '😀', '😂', '😎', '😍', '😜', '😱', '🤔', '😇', '🥳', '🥶', '🤠', '😈',
         '👻', '💀', '🤖', '👽', '😺', '🙈', '🙉', '🙊', '🐶', '🐱', '🐭', '🐹',
@@ -157,6 +173,7 @@ function createEmojiPairs(numCards) {
         '🍎', '🍊', '🍉', '🍓', '🍒', '🍌', '🍍', '🍇', '🍔', '🍕', '🍟', '🍩',
         '🍦', '🍫', '🍿', '🍪', '🍭', '🧁', '🥨', '🍻', '🥂', '🍷', '🍸', '🍹'
     ] 
+
     let emojis = [] 
     const numPairs = numCards / 2 
 
@@ -179,7 +196,4 @@ buttonReset.addEventListener('click', () => {
     for (let card of cards) {
         card.classList.remove('flipped') 
     }
-    scoreP1 = 0
-    scoreP2 = 0
-
 }) 
