@@ -71,15 +71,20 @@ function buildDeck(gameSize) {
 
         card.appendChild(emojiSpan) 
 
-        card.addEventListener('click', () => handleCardClick(card, emojiSpan)) 
+        card.addEventListener('click', () => cardClicked(card, emojiSpan)) 
 
         board.appendChild(card) 
     }
 }
 
+function flipCard(card, emojiSpan) {
+    card.classList.toggle('flipped') 
+    console.log(emojiSpan.textContent) 
+}
+
 let flippedCards = []
 
-function handleCardClick(card, emojiSpan) {
+function cardClicked(card, emojiSpan) {
     if (!card.classList.contains('flipped')) {
         emojiSpan.style.visibility = 'visible' 
         flipCard(card, emojiSpan) 
@@ -90,56 +95,45 @@ function handleCardClick(card, emojiSpan) {
             emoji: emojiSpan.textContent
         })
 
-        clickCount++ 
+        clickCount ++
 
-        if (clickCount == 2){
+        // console.log(clickCount)
+
+        if (clickCount === 2){
             let firstCard = flippedCards[0]
             let secondCard = flippedCards[1]
 
             if (firstCard.emoji === secondCard.emoji){
-                   console.log('they match')
+                console.log('they match')
+                flippedCards = []
+                clickCount = 0
+                switchPlayer()  
             } else {
                 console.log('NOT match')
+               // firstCard.emojiSpan.style.visibility = 'hidden'
+              //  secondCard.emojiSpan.style.visibility = 'hidden'
+                firstCard.card.classList.remove('flipped')
+                secondCard.card.classList.remove('flipped')
+                flippedCards = []
+                clickCount = 0
+                switchPlayer()  
             }
-        }
-
-        // if (currentPlayer === 1) {
-        //     player1Clicks.push(card) 
-        // } else {
-        //     player2Clicks.push(card) 
-        // }
-       
-        // console.log(firstClick)
-        // console.log(secondClick)
-        
-        // if (clickCount === 2) {
-        //     const flippedCards = [firstCard, secondCard]
-
-        //     if (firstCard.emoji === secondCard.emoji){
-        //         console.log('Match found')
-        //     }
-
-        //     if (currentPlayer === 1) {
-        //         currentPlayer = 2;
-        //     } else {
-        //         currentPlayer = 1;
-        //     }
-            
-        //     clickCount = 0;
-        
-        //     let currentPlayerName = document.querySelector(`#player${currentPlayer}`).value;
-        //     document.getElementById("currentPlayer").textContent = currentPlayerName;
-        // }
+        } 
     }
 }
 
-
-function flipCard(card, emojiSpan) {
-    card.classList.toggle('flipped') 
-
-
-    console.log("Card flipped with emoji:", emojiSpan.textContent) 
+function switchPlayer() {
+    if (currentPlayer === 1) {
+        currentPlayer = 2
+    } else {
+        currentPlayer = 1
+    }
+    let currentPlayerName = document.querySelector(`#player${currentPlayer}`).value
+    document.getElementById("currentPlayer").textContent = currentPlayerName
 }
+
+
+
 
 function createEmojiPairs(numCards) {
     const emojiList = [
