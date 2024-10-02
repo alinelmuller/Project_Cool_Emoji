@@ -6,6 +6,9 @@ let clickCount = 0
 let player1Clicks = []
 let player2Clicks = []
 let currentPlayer = 1
+let scoreP1 = 0
+let scoreP2 = 0
+
 
 // Start the game
 buttonPlay.addEventListener('click', () => {
@@ -107,11 +110,18 @@ function cardClicked(card, emojiSpan) {
                 console.log('they match')
                 flippedCards = []
                 clickCount = 0
+
+                if (currentPlayer === 1) {
+                    scoreP1++
+                    document.getElementById("scoreP1").textContent = scoreP1
+                } else {
+                    scoreP2++;
+                    document.getElementById("scoreP2").textContent = scoreP2
+                }
                 switchPlayer()  
+                
             } else {
                 console.log('NOT match')
-               // firstCard.emojiSpan.style.visibility = 'hidden'
-              //  secondCard.emojiSpan.style.visibility = 'hidden'
                 firstCard.card.classList.remove('flipped')
                 secondCard.card.classList.remove('flipped')
                 flippedCards = []
@@ -132,10 +142,8 @@ function switchPlayer() {
     document.getElementById("currentPlayer").textContent = currentPlayerName
 }
 
-
-
-
 function createEmojiPairs(numCards) {
+
     const emojiList = [
         '😀', '😂', '😎', '😍', '😜', '😱', '🤔', '😇', '🥳', '🥶', '🤠', '😈',
         '👻', '💀', '🤖', '👽', '😺', '🙈', '🙉', '🙊', '🐶', '🐱', '🐭', '🐹',
@@ -168,4 +176,7 @@ buttonReset.addEventListener('click', () => {
     for (let card of cards) {
         card.classList.remove('flipped') 
     }
+    scoreP1 = 0
+    scoreP2 = 0
+
 }) 
