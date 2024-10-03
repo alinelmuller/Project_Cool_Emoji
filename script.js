@@ -119,7 +119,6 @@ function cardClicked(card, emojiSpan) {
                 switchPlayer()  
             } else {
                 setTimeout(() => {
-                    //console.log('NOT match')
                     firstCard.card.classList.remove('flipped')
                     secondCard.card.classList.remove('flipped')
                     flippedCards = []
@@ -131,24 +130,19 @@ function cardClicked(card, emojiSpan) {
     }
 }
 
-function switchPlayer() {
-   
+function switchPlayer() { 
     if (currentPlayer === 1) {
         currentPlayer = 2
-        console.log(checkWinner())
     } else {
         currentPlayer = 1
-        console.log(checkWinner())
     }
     let currentPlayerName = (currentPlayer === 1) ? player1 : player2
         
     if (checkWinner()) {
         document.getElementById("currentPlayer").textContent = declareWinner()
     } else{
-        console.log('')
         document.getElementById("currentPlayer").textContent = (`${currentPlayerName} , it is your turn`) 
     }
-
 }
 
 function checkWinner() {
@@ -211,17 +205,26 @@ function createEmojiPairs(numCards) {
  }
 
  let samePlayers = function (){
+    
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "block"
     document.getElementById("winnerBox").style.display = "none" 
+    
+    clickCount = 0
+    player1Clicks = []
+    player2Clicks = []
+    currentPlayer = 1
+    scoreP1 = 0
+    scoreP2 = 0
     const cards = document.getElementsByClassName("card") 
+    document.getElementById("scoreP1").textContent = scoreP1
+    document.getElementById("scoreP2").textContent = scoreP2
     for (let card of cards) {
         card.classList.remove('flipped') 
     }
-
  }
 
 buttonNewGame.addEventListener('click', reloadPage) 
 buttonNewGameWinner.addEventListener('click', reloadPage) 
-buttonReset.addEventListener('click', reloadPage) 
-buttonPlayAgain.addEventListener('click', reloadPage) 
+buttonReset.addEventListener('click', samePlayers) 
+buttonPlayAgain.addEventListener('click', samePlayers) 

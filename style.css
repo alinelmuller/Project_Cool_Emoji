@@ -64,7 +64,6 @@ input[type="text"], select {
 }
 
 #scores {
-    /* margin: 0 15px; */
     font-size: 26px;
     text-align: center; 
 }
@@ -98,22 +97,31 @@ input[type="text"], select {
     font-size: 40px;
     cursor: pointer;
     border-radius: 10px;
+
+    transition: transform 1s;
+    transform-style: preserve-3d;
 }
 
 .card span {
     display: none;
     font-size: 2rem;
 }
+
 .card.flipped {
     background-color: #f0f0f0;
+    transform: rotateY( 180deg );
 } 
+
 .card.flipped span{
     display: block;
+    
 }
+
 .buttons {
     text-align: center;
     padding: 10px 5px 25px 5px;
 } 
+
 .bnt {
     display: inline-block;
     padding: 10px 10px;
@@ -128,9 +136,9 @@ input[type="text"], select {
     border: none;
     border-radius: 15px;
     box-shadow: 0 3px #ff1da8;
-  }
+}
   
-  .bnt:hover {
+.bnt:hover {
     background-color: #ff1da8;
     box-shadow: 0 3px #00ffff;
 }
@@ -145,6 +153,7 @@ input[type="text"], select {
     width: 80%;
     margin: 15px 0;
 }
+
 #firstBox .bnt{
     padding: 10px 20px;
     font-size: 20px;
@@ -162,9 +171,11 @@ input[type="text"], select {
 #winnerBox{
     text-align: center;
 }
+
 #winnerBox img{
     width: 70%;
 }
+
 #winnerBox .buttons {
     margin-top: 20px;
 }
