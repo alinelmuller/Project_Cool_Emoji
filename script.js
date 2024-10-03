@@ -10,8 +10,8 @@ let scoreP1 = 0
 let scoreP2 = 0
 
 buttonPlay.addEventListener('click', () => {
-    let player1 = document.querySelector("#player1").value
-    let player2 = document.querySelector("#player2").value
+    let player1 = document.querySelector("#player1").value || ('Player 1')
+    let player2 = document.querySelector("#player2").value || ('Player 2')
     let gameSize = document.querySelector("#gameSize").value 
 
     document.getElementById("firstBox").style.display = "none" 
