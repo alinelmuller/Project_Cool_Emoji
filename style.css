@@ -90,4 +90,12 @@ input[type="text"], select {
 .buttons {
     text-align: center;
 }
-
+#winnerBox{
+    text-align: center;
+}
+#winnerBox img{
+    width: 70%;
+}
+#winnerBox .buttons {
+    margin-top: 20px;
+}

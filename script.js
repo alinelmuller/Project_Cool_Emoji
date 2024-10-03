@@ -1,7 +1,10 @@
 document.getElementById("secondBox").style.display = "none"
+document.getElementById("winnerBox").style.display = "none" 
 let buttonPlay = document.querySelector("#buttonPlay")
 let buttonNewGame = document.getElementById("buttonNewGame")
+let buttonNewGameWinner = document.getElementById("buttonNewGameWinner")
 let buttonReset = document.getElementById("buttonReset")
+let buttonPlayAgain = document.getElementById("buttonPlayAgain")
 let clickCount = 0
 let player1Clicks = []
 let player2Clicks = []
@@ -155,10 +158,13 @@ function checkWinner() {
 }
 
 function declareWinner() {
+    document.getElementById("firstBox").style.display = "none" 
+    document.getElementById("secondBox").style.display = "none"
+    document.getElementById("winnerBox").style.display = "block" 
     if (scoreP1 > scoreP2) {
-        return document.querySelector("#player1").value + " wins!"
+        document.getElementById('winnersName').textContent = player1
     } else if (scoreP2 > scoreP1) {
-        return document.querySelector("#player2").value + " wins!"
+        document.getElementById('winnersName').textContent = player2
     } else {
         return "It's a tie!"
     }
@@ -200,16 +206,22 @@ function createEmojiPairs(numCards) {
     return shuffle(emojis)
  }
 
-buttonNewGame.addEventListener('click', () => {
-    document.getElementById("firstBox").style.display = "block" 
-    document.getElementById("secondBox").style.display = "none" 
-    document.querySelector("#player1").value = '' 
-    document.querySelector("#player2").value = '' 
-}) 
+ let reloadPage = function (){
+    location.reload();
+ }
 
-buttonReset.addEventListener('click', () => {
+ let samePlayers = function (){
+    document.getElementById("firstBox").style.display = "none" 
+    document.getElementById("secondBox").style.display = "block"
+    document.getElementById("winnerBox").style.display = "none" 
     const cards = document.getElementsByClassName("card") 
     for (let card of cards) {
         card.classList.remove('flipped') 
     }
-}) 
+
+ }
+
+buttonNewGame.addEventListener('click', reloadPage) 
+buttonNewGameWinner.addEventListener('click', reloadPage) 
+buttonReset.addEventListener('click', reloadPage) 
+buttonPlayAgain.addEventListener('click', reloadPage) 
