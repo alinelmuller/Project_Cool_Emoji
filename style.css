@@ -23,7 +23,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     background-color: white;
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -43,12 +42,33 @@ input[type="text"], select {
     border-radius: 5px;
 }
 
-.players {
+ .players {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
+    align-items: center; 
     margin-bottom: 10px;
-    font-size: 1.2rem;
+    font-size: 20px;
+    width: 100%;
 }
+
+#player1Name {
+    color: #ff1da8;
+    text-align: center; 
+    flex: 1; 
+}
+
+#player2Name {
+    color: #00ffff;
+    text-align: center; 
+    flex: 1; 
+}
+
+#scores {
+    /* margin: 0 15px; */
+    font-size: 26px;
+    text-align: center; 
+}
+
 
 .currentPlayer {
     margin: 10px 0;
@@ -62,12 +82,14 @@ input[type="text"], select {
     display: grid;
     gap: 10px;
     margin-bottom: 20px;
-    width: auto;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .card {
-    background-color: #ccc;
-    border: 1px solid #333;
+    background-color: #833639;
+    border: 1px solid #ff1da8;
     width: 100px;
     height: 100px;
     display: flex;
@@ -76,20 +98,44 @@ input[type="text"], select {
     font-size: 40px;
     cursor: pointer;
     border-radius: 10px;
-    perspective: 1000px;
 }
 
 .card span {
     display: none;
     font-size: 2rem;
 }
-
-.card.flipped span {
+.card.flipped {
+    background-color: #f0f0f0;
+} 
+.card.flipped span{
     display: block;
 }
 .buttons {
     text-align: center;
+    padding: 10px 5px 25px 5px;
+} 
+
+
+
+
+#firstBox img{
+    width: 80%;
+    margin: 15px 0;
 }
+#firstBox .bnt{
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+#secondBox{
+    text-align: center;
+}
+
+#secondBox img{
+    width: 60% ;
+    margin: 15px 0;
+}
+
 #winnerBox{
     text-align: center;
 }
@@ -99,3 +145,4 @@ input[type="text"], select {
 #winnerBox .buttons {
     margin-top: 20px;
 }
+
