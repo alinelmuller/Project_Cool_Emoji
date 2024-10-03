@@ -8,18 +8,18 @@ let player2Clicks = []
 let currentPlayer = 1
 let scoreP1 = 0
 let scoreP2 = 0
+let player1, player2
 
 buttonPlay.addEventListener('click', () => {
-    let player1 = document.querySelector("#player1").value || ('Player 1')
-    let player2 = document.querySelector("#player2").value || ('Player 2')
+    player1 = document.querySelector("#player1").value || ('Player 1')
+    player2 = document.querySelector("#player2").value || ('Player 2')
     let gameSize = document.querySelector("#gameSize").value 
 
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "block" 
     document.getElementById("player1Name").textContent = player1 
     document.getElementById("player2Name").textContent = player2 
-   // document.getElementById("currentPlayer").textContent = (`${player1}, it is your turn`)
-   document.getElementById("currentPlayer").textContent = player1
+    document.getElementById("currentPlayer").textContent = player1 + (`, it is your turn`)
 
     buildDeck(gameSize) 
 }) 
@@ -137,13 +137,15 @@ function switchPlayer() {
         currentPlayer = 1
         console.log(checkWinner())
     }
-    let currentPlayerName = document.querySelector(`#player${currentPlayer}`).value
-    //document.getElementById("currentPlayer").textContent = (`${currentPlayerName} , it is your turn`)
-    document.getElementById("currentPlayer").textContent = currentPlayerName
-    
+    let currentPlayerName = (currentPlayer === 1) ? player1 : player2
+        
     if (checkWinner()) {
         document.getElementById("currentPlayer").textContent = declareWinner()
+    } else{
+        console.log('')
+        document.getElementById("currentPlayer").textContent = (`${currentPlayerName} , it is your turn`) 
     }
+
 }
 
 function checkWinner() {
@@ -163,6 +165,15 @@ function declareWinner() {
 }
 
 function createEmojiPairs(numCards) {
+    // const shuffle = (array) => {
+    //     for (let i = array.length - 1; i >= 0; i--) {
+    //            const randomIndex = Math.floor(Math.random() * (i + 1));
+    //            array.push(array[randomIndex]);
+    //          //  array.splice(array, 1);
+    //        }
+    //        return array;
+    // } 
+
     const emojiList = [
         '😀', '😂', '😎', '😍', '😜', '😱', '🤔', '😇', '🥳', '🥶', '🤠', '😈',
         '👻', '💀', '🤖', '👽', '😺', '🙈', '🙉', '🙊', '🐶', '🐱', '🐭', '🐹',
@@ -174,6 +185,8 @@ function createEmojiPairs(numCards) {
         '🍦', '🍫', '🍿', '🍪', '🍭', '🧁', '🥨', '🍻', '🥂', '🍷', '🍸', '🍹'
     ] 
 
+  //  shuffle(emojiList)
+
     let emojis = [] 
     const numPairs = numCards / 2 
 
@@ -181,8 +194,11 @@ function createEmojiPairs(numCards) {
         emojis.push(emojiList[i]) 
         emojis.push(emojiList[i]) 
     }
-    return emojis 
+    //return shuffle(emojis)
+    return (emojis)
 }
+
+
 
 buttonNewGame.addEventListener('click', () => {
     document.getElementById("firstBox").style.display = "block" 
