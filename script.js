@@ -165,14 +165,17 @@ function declareWinner() {
 }
 
 function createEmojiPairs(numCards) {
-    // const shuffle = (array) => {
-    //     for (let i = array.length - 1; i >= 0; i--) {
-    //            const randomIndex = Math.floor(Math.random() * (i + 1));
-    //            array.push(array[randomIndex]);
-    //          //  array.splice(array, 1);
-    //        }
-    //        return array;
-    // } 
+    //Fisher-Yates Shuffle
+    const shuffle = (array) => {
+        let oldElement;
+        for (let i = array.length - 1; i > 0; i--) {
+          let rand = Math.floor(Math.random() * (i + 1));
+          oldElement = array[i];
+          array[i] = array[rand];
+          array[rand] = oldElement;
+        }
+        return array;
+    } 
 
     const emojiList = [
         '😀', '😂', '😎', '😍', '😜', '😱', '🤔', '😇', '🥳', '🥶', '🤠', '😈',
@@ -185,7 +188,7 @@ function createEmojiPairs(numCards) {
         '🍦', '🍫', '🍿', '🍪', '🍭', '🧁', '🥨', '🍻', '🥂', '🍷', '🍸', '🍹'
     ] 
 
-  //  shuffle(emojiList)
+   shuffle(emojiList)
 
     let emojis = [] 
     const numPairs = numCards / 2 
@@ -194,11 +197,8 @@ function createEmojiPairs(numCards) {
         emojis.push(emojiList[i]) 
         emojis.push(emojiList[i]) 
     }
-    //return shuffle(emojis)
-    return (emojis)
-}
-
-
+    return shuffle(emojis)
+ }
 
 buttonNewGame.addEventListener('click', () => {
     document.getElementById("firstBox").style.display = "block" 
