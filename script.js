@@ -12,11 +12,13 @@ let currentPlayer = 1
 let scoreP1 = 0
 let scoreP2 = 0
 let player1, player2
+let rows, cols    
+let gameSize = document.querySelector("#gameSize").value 
 
 buttonPlay.addEventListener('click', () => {
     player1 = document.querySelector("#player1").value || ('Player 1')
     player2 = document.querySelector("#player2").value || ('Player 2')
-    let gameSize = document.querySelector("#gameSize").value 
+
 
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "block" 
@@ -30,8 +32,7 @@ buttonPlay.addEventListener('click', () => {
 function buildDeck(gameSize) {
     const board = document.querySelector(".board") 
     board.innerHTML = "" 
-
-    let rows = 0, cols = 0 
+   
     switch (gameSize) {
         case "2x3":
             cols = 2  
@@ -105,7 +106,6 @@ function cardClicked(card, emojiSpan) {
             let secondCard = flippedCards[1]
 
             if (firstCard.emoji === secondCard.emoji){
-                //console.log('they match')
                 flippedCards = []
                 clickCount = 0
 
@@ -155,12 +155,14 @@ function declareWinner() {
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "none"
     document.getElementById("winnerBox").style.display = "block" 
+    console.log(scoreP1)
+    console.log(scoreP2)
     if (scoreP1 > scoreP2) {
         document.getElementById('winnersName').textContent = player1
     } else if (scoreP2 > scoreP1) {
         document.getElementById('winnersName').textContent = player2
     } else {
-        return "It's a tie!"
+       document.getElementById('currentPlayer').textContent = ("It's a tie!")
     }
 }
 
@@ -192,19 +194,21 @@ function createEmojiPairs(numCards) {
 
     let emojis = [] 
     const numPairs = numCards / 2 
-
+   
     for (let i = 0; i < numPairs; i++) {
         emojis.push(emojiList[i]) 
         emojis.push(emojiList[i]) 
     }
-    return shuffle(emojis)
+    return shuffle(emojis)   
  }
 
  let reloadPage = function (){
     location.reload();
  }
-
+ 
  let samePlayers = function (){
+   // let numCard = rows * cols 
+   buildDeck(gameSize) 
     
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "block"
@@ -222,6 +226,7 @@ function createEmojiPairs(numCards) {
     for (let card of cards) {
         card.classList.remove('flipped') 
     }
+    
  }
 
 buttonNewGame.addEventListener('click', reloadPage) 

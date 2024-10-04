@@ -42,7 +42,7 @@ input[type="text"], select {
     border-radius: 5px;
 }
 
- .players {
+.players {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
@@ -170,6 +170,7 @@ input[type="text"], select {
 
 #winnerBox{
     text-align: center;
+    padding-top: 30px;
 }
 
 #winnerBox img{
