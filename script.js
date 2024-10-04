@@ -167,7 +167,7 @@ function declareWinner() {
     } else if (scoreP2 > scoreP1) {
         document.getElementById('winnersName').textContent = player2
     } else {
-       document.getElementById('currentPlayer').textContent = ("It's a tie!")
+        document.getElementById('winnersName').textContent =  "It's a tie!"
     }
 }
 
