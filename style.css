@@ -97,7 +97,6 @@ input[type="text"], select {
     font-size: 40px;
     cursor: pointer;
     border-radius: 10px;
-
     transition: transform 1s;
     transform-style: preserve-3d;
 }

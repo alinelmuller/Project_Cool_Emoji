@@ -15,7 +15,6 @@ let player1, player2
 let rows, cols    
 let gameSize = document.querySelector("#gameSize").value 
 
-
 // Play - Button
 buttonPlay.addEventListener('click', () => {
     player1 = document.querySelector("#player1").value || ('Player 1')
@@ -25,6 +24,7 @@ buttonPlay.addEventListener('click', () => {
     document.getElementById("player1Name").textContent = player1 
     document.getElementById("player2Name").textContent = player2 
     document.getElementById("currentPlayer").textContent = player1 + (`, it is your turn`)
+    gameSize = document.querySelector("#gameSize").value 
     buildDeck(gameSize) 
 }) 
 
@@ -73,8 +73,11 @@ function buildDeck(gameSize) {
         const emojiSpan = document.createElement('span') 
         emojiSpan.textContent = emojis[i] 
         emojiSpan.style.visibility = 'hidden' 
+
         card.appendChild(emojiSpan) 
+
         card.addEventListener('click', () => cardClicked(card, emojiSpan)) 
+
         board.appendChild(card) 
     }
 }
@@ -82,12 +85,12 @@ function buildDeck(gameSize) {
 // Function Flip Card
 function flipCard(card, emojiSpan) {
     card.classList.toggle('flipped') 
+    console.log(emojiSpan.textContent) 
 }
 
-
+// Function Check card flipped and add score
 let flippedCards = []
 
-// Function Check card flipped and add score
 function cardClicked(card, emojiSpan) {
     if (!card.classList.contains('flipped')) {
         emojiSpan.style.visibility = 'visible' 
@@ -204,15 +207,19 @@ function createEmojiPairs(numCards) {
     }
     return shuffle(emojis)   
  }
- 
-// Function if the same players  
-let samePlayers = function (){
-    buildDeck(gameSize) 
 
+ let reloadPage = function (){
+    location.reload();
+ }
+
+ // Function if the same players 
+ let samePlayers = function (){
+    buildDeck(gameSize) 
+    
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "block"
     document.getElementById("winnerBox").style.display = "none" 
-
+    
     clickCount = 0
     player1Clicks = []
     player2Clicks = []
@@ -224,13 +231,9 @@ let samePlayers = function (){
     document.getElementById("scoreP2").textContent = scoreP2
     for (let card of cards) {
         card.classList.remove('flipped') 
-    }    
-}
-
-// Refresh Page
-let reloadPage = function (){
-    location.reload();
-}
+    }
+    
+ }
 
 buttonNewGame.addEventListener('click', reloadPage) 
 buttonNewGameWinner.addEventListener('click', reloadPage) 
