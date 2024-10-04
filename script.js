@@ -15,20 +15,20 @@ let player1, player2
 let rows, cols    
 let gameSize = document.querySelector("#gameSize").value 
 
+
+// Play - Button
 buttonPlay.addEventListener('click', () => {
     player1 = document.querySelector("#player1").value || ('Player 1')
     player2 = document.querySelector("#player2").value || ('Player 2')
-
-
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "block" 
     document.getElementById("player1Name").textContent = player1 
     document.getElementById("player2Name").textContent = player2 
     document.getElementById("currentPlayer").textContent = player1 + (`, it is your turn`)
-
     buildDeck(gameSize) 
 }) 
 
+// Function Build Deck 
 function buildDeck(gameSize) {
     const board = document.querySelector(".board") 
     board.innerHTML = "" 
@@ -73,22 +73,21 @@ function buildDeck(gameSize) {
         const emojiSpan = document.createElement('span') 
         emojiSpan.textContent = emojis[i] 
         emojiSpan.style.visibility = 'hidden' 
-
         card.appendChild(emojiSpan) 
-
         card.addEventListener('click', () => cardClicked(card, emojiSpan)) 
-
         board.appendChild(card) 
     }
 }
 
+// Function Flip Card
 function flipCard(card, emojiSpan) {
     card.classList.toggle('flipped') 
-    console.log(emojiSpan.textContent) 
 }
+
 
 let flippedCards = []
 
+// Function Check card flipped and add score
 function cardClicked(card, emojiSpan) {
     if (!card.classList.contains('flipped')) {
         emojiSpan.style.visibility = 'visible' 
@@ -130,6 +129,7 @@ function cardClicked(card, emojiSpan) {
     }
 }
 
+//Function Check player
 function switchPlayer() { 
     if (currentPlayer === 1) {
         currentPlayer = 2
@@ -145,12 +145,14 @@ function switchPlayer() {
     }
 }
 
+//Function Check Winner
 function checkWinner() {
     let flippedCards = document.querySelectorAll(".card.flipped")
     let totalCards = document.querySelectorAll(".card").length
     return flippedCards.length === totalCards
 }
 
+// Function change layout for the winner
 function declareWinner() {
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "none"
@@ -166,6 +168,7 @@ function declareWinner() {
     }
 }
 
+// Function for Emoji 
 function createEmojiPairs(numCards) {
     //Fisher-Yates Shuffle
     const shuffle = (array) => {
@@ -201,19 +204,15 @@ function createEmojiPairs(numCards) {
     }
     return shuffle(emojis)   
  }
-
- let reloadPage = function (){
-    location.reload();
- }
  
- let samePlayers = function (){
-   // let numCard = rows * cols 
-   buildDeck(gameSize) 
-    
+// Function if the same players  
+let samePlayers = function (){
+    buildDeck(gameSize) 
+
     document.getElementById("firstBox").style.display = "none" 
     document.getElementById("secondBox").style.display = "block"
     document.getElementById("winnerBox").style.display = "none" 
-    
+
     clickCount = 0
     player1Clicks = []
     player2Clicks = []
@@ -225,9 +224,13 @@ function createEmojiPairs(numCards) {
     document.getElementById("scoreP2").textContent = scoreP2
     for (let card of cards) {
         card.classList.remove('flipped') 
-    }
-    
- }
+    }    
+}
+
+// Refresh Page
+let reloadPage = function (){
+    location.reload();
+}
 
 buttonNewGame.addEventListener('click', reloadPage) 
 buttonNewGameWinner.addEventListener('click', reloadPage) 
